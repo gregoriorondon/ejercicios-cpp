@@ -1,0 +1,117 @@
+#include<iostream.h>
+#include<string.h>
+#include<windows.h>
+char morse[27][10]={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+char alfa[]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+char alfa2[]={"abcdefghijklmnopqrstuvwxyz"};
+char *ptr[27],*ptr1,*ptr2;
+
+void inicializacion()
+{
+	for(int i=0;i<26;i++)
+		ptr[i]=&morse[i][0];
+	ptr1=&alfa[0];
+	ptr2=&alfa2[0];
+}
+
+void frase2morse()
+{
+	char cad[255],*ptram;
+	char  aux[255]={" "};
+	int l=0;
+	cout<<endl<<"\t\t         Int cadena: ";
+	cin.getline(cad,255);
+	cin.getline(cad,255);
+	system("cls");
+	ptram=&cad[0];
+	l=strlen(cad);
+	for(int i=0;i<l;i++)
+	{
+		for(int j=0;j<26;j++)
+		{
+			if((*(ptram+i)==*(ptr1+j)) || (*(ptram+i)==*(ptr2+j)))
+			{
+				strcat(aux,ptr[j]);
+			}
+		}
+	}
+	cout<<endl<<"\t\t   La Cadena Introducida en Codigo Morse es: "<<endl<<"\t\t    "<<aux;
+}
+
+void morse2frace()
+{
+	char cad[255]={" "},maux[100][100]={" "};
+	char *ptrma,*ptrmaaux[100];
+	char aux[255]={" "},aux2[255]={" "};
+	int l,f,c,h;
+	cout<<endl<<"\t\t        Int codigo morse:         ";
+	cout<<endl<<"\t\tincluya un espacio entre cada letra "<<endl;
+	cin.getline(cad,255);
+	cin.getline(cad,255);
+	strcat(cad," ");
+	ptrma=&cad[0];
+	l=strlen(cad);
+	f=0;
+	c=0;
+	for(int i=0;i<l;i++)
+	{
+		if(*(ptrma+i)!=' ')
+		{
+			maux[f][c]=*(ptrma+i);
+			c++;
+		}
+		else
+		{
+			f++;
+			c=0;
+		}
+	}
+	for(i=0;i<f;i++)
+		ptrmaaux[i]=&maux[i][0];
+	h=0;
+	for(i=0;i<f;i++)
+	{
+		for(int j=0;j<26;j++)
+		{
+			if(strcmp(ptrmaaux[i],ptr[j])==0)
+			{
+				aux[h]=*ptr1+j;
+				h++;
+			}
+		}
+	}
+	system("cls");
+	strcpy(aux2,aux);
+	cout<<endl<<"\t\t   El Codigo Morse Introducido Significa: "<<endl<<"\t\t          "<<aux2;
+}
+
+void main()
+{
+	int opc;
+	inicializacion();
+	do
+	{
+		system("cls");
+		cout<<endl<<"Que desea hacer: ";
+		cout<<endl<<"\t\t1._Frase a Codigo Morse: ";
+		cout<<endl<<"\t\t2._Codigo Morse a Frase: ";
+		cout<<endl<<"\t\t3._Salir: ";
+		cin>>opc;
+		if(opc==1)
+		{
+			system("cls");
+			frase2morse();
+			cin.get();
+			cin.get();
+		}
+		if(opc==2)
+		{
+			system("cls");
+			morse2frace();
+			cin.get();
+			cin.get();
+		}
+	}while(opc!=3);	
+	cin.get();
+	cin.get();
+}
