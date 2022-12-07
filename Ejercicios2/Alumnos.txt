@@ -1,0 +1,58 @@
+/*Dados los datos de N alumnos de una seccion la cual tiene M profesores cada uno
+con sus materias correspondientes, uste debe diseñar un algoritmo que le permita
+manejar estructuras de datos para llevar un control de las notas de cada alumno
+en cada materia.
+debe imprimir la estructura de datos perteneciente al informe de todos los alumnos
+con sus materias, ademas imprimir otra estructura de datos que contenga el prome
+dio de cada alumno.*/
+#include<iostream.h>
+#include<math.h>
+void main()
+{
+
+	
+	int n,ca,i,j,m[256][256],pro[256],s=0;
+	cout<<"Ingrese cantidad de alumnos"<<endl;  
+	cin>>ca;
+	cout<<"Ingrese la cantidad de materias del  alumno"<<endl;
+	cin>>n;
+	for(i=1;i<=ca;i++)
+	{	
+		s=0;
+		for(j=1;j<=n;j++)
+		{
+			cout<<"Ingrese la "<<j<<" nota del "<<i<<" alumno"<<endl;
+			cin>>m[i][j];
+			s=s+m[i][j];
+		}
+		pro[i]=s/n;
+	}
+		cout<<"estudiante         materia           promedio"<<endl<<"\t";
+		for(int k=1;k<=n;k++)
+		{
+			cout<<"\t"<<k;}
+			cout<<endl;
+			for(i=1;i<=ca;i++)
+			{
+				cout<<i<<"\t"<<"\t";
+				for(j=1;j<=n;j++)
+				{
+					cout<<m[i][j]<<"\t";
+			
+		}cout<<"\t"<<pro[i]<<endl;
+		
+	
+	}
+		cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
+		cout<<"++++++ PULSE UNA TECLA PARA SALIR DEL SISTEMA ++++++"<<endl;
+		cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
+		cout<<"          +         +      +   +      "<<endl;
+		cout<<"          +         +    +       +    "<<endl;
+		cout<<"          +         +    +       +    "<<endl;
+		cout<<"          + + + + + +    + + + +      "<<endl;
+		cout<<"          +         +    +            "<<endl;
+		cout<<"          +         +    +            "<<endl;
+		cout<<"          +         +    +            "<<endl;
+		cin.get();
+		cin.get();
+}
